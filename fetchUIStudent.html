@@ -47,7 +47,11 @@
                 <form>
                     <div class="mb-3">
                         <label for="input-name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="input-name">
+                        <!-- <input type="text" class="form-control" id="input-name"> -->
+                        <SELECT class="form-control" id="input-name">
+                            <OPTION value="myValue">Tekst der vises</OPTION>
+                            <OPTION value="mySelectedValue" SELECTED>Min valgte option</OPTION>
+                        </SELECT>
                     </div>
                     <div class="mb-3">
                         <label for="input-born-date" class="form-label">Born Date</label>
@@ -77,6 +81,13 @@
     let students = [
         {id: 100, name: "Madeleine Flynn", bornDate: "2012-03-12", bornTime: "12:01"},
         {id: 101, name: "Cecile Benson", bornDate: "2011-09-21", bornTime: "15:01"}
+    ]
+
+    let names = [
+        "Sigurd",
+        "Laura",
+        "Bjarne",
+        "Ida"
     ]
 
     const URLstudents = "http://localhost:3333/students"; //For when we meet in the class - remember to set server.port = 3333
@@ -144,7 +155,36 @@
         // if (student.id) {lbl = "Edit Student"} else {lbl = "Add Student"}
         // document.getElementById("modal-title").innerText = lbl
         document.getElementById("student-id").innerText = student.id
-        document.getElementById("input-name").value = student.name
+        //document.getElementById("input-name").value = student.name
+        let selectElement = document.getElementById("input-name")
+
+        /*
+        //html join af map af names til html - husk selected
+        let selectHtml = names.map(n => {
+            let isSelected = (n === student.name?"SELECTED":"")
+            return `<OPTION value="${n}" ${isSelected}>${n}</OPTION>`
+        }).join("")
+
+        selectElement.innerHTML = selectHtml
+        */
+        selectElement.innerHTML =""
+        names.map(n =>{
+            //lave option element
+            let option = document.createElement("option")
+
+            //set value og text
+            option.value = n
+            option.text = n
+
+            //håndter selected name
+            if (n === student.name){
+                option.selected
+            }
+
+            //tilføj option til SELECT i DOM
+            selectElement.appendChild(option)
+        })
+
         document.getElementById("input-born-date").value = student.bornDate
         document.getElementById("input-born-time").value = student.bornTime
         myModal.show()
