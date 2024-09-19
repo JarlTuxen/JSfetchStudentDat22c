@@ -1,79 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Student</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-            crossorigin="anonymous"></script>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <title>Student</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+                crossorigin="anonymous"></script>
+    </head>
 
 
-<body class="container">
-<h3>All Students</h3>
-<div style="height: 300px;overflow-y: scroll;">
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Born Data</th>
-            <th>Born Time</th>
-            <th></th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody id="student-table-body">
-        </tbody>
-    </table>
-</div>
-<button type="button" class="btn btn-primary" id="btn-add-student">
-    Add new student
-</button>
-<p id="add-error-msg" class="alert alert-danger" style="max-width: 50%;display: none;" role="alert"></p>
+    <body class="container">
+        <h3>All Students</h3>
+        <div style="height: 300px;overflow-y: scroll;">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Born Data</th>
+                    <th>Born Time</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody id="student-table-body">
+                </tbody>
+            </table>
+        </div>
+        <button type="button" class="btn btn-primary" id="btn-add-student">
+            Add new student
+        </button>
+        <p id="add-error-msg" class="alert alert-danger" style="max-width: 50%;display: none;" role="alert"></p>
 
-<!-- Modal -->
-<div class="modal fade" id="student-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modal-title">Add Student</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p >Student ID: <span id="student-id"></span></p>
-                <form>
-                    <div class="mb-3">
-                        <label for="input-name" class="form-label">Name</label>
-                        <!-- <input type="text" class="form-control" id="input-name"> -->
-                        <SELECT class="form-control" id="input-name">
-                            <OPTION value="myValue">Tekst der vises</OPTION>
-                            <OPTION value="mySelectedValue" SELECTED>Min valgte option</OPTION>
-                        </SELECT>
+        <!-- Modal -->
+        <div class="modal fade" id="student-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal-title">Add Student</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="mb-3">
-                        <label for="input-born-date" class="form-label">Born Date</label>
-                        <input type="date" class="form-control" id="input-born-date">
+                    <div class="modal-body">
+                        <p >Student ID: <span id="student-id"></span></p>
+                        <form>
+                            <div class="mb-3">
+                                <label for="input-name" class="form-label">Name</label>
+                                <!-- <input type="text" class="form-control" id="input-name"> -->
+                                <SELECT class="form-control" id="input-name">
+                                    <OPTION value="myValue">Tekst der vises</OPTION>
+                                    <OPTION value="mySelectedValue" SELECTED>Min valgte option</OPTION>
+                                </SELECT>
+                            </div>
+                            <div class="mb-3">
+                                <label for="input-born-date" class="form-label">Born Date</label>
+                                <input type="date" class="form-control" id="input-born-date">
+                            </div>
+                            <div class="mb-3">
+                                <label for="input-born-time" class="form-label">Born Time</label>
+                                <input type="time" class="form-control" id="input-born-time" value="00:00:00" step="1">
+                            </div>
+                        </form>
                     </div>
-                    <div class="mb-3">
-                        <label for="input-born-time" class="form-label">Born Time</label>
-                        <input type="time" class="form-control" id="input-born-time" value="00:00:00" step="1">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">cancel</button>
+                        <button id="btn-save" type="button" class="btn btn-primary" data-bs-dismiss="modal">Save changes
+                        </button>
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">cancel</button>
-                <button id="btn-save" type="button" class="btn btn-primary" data-bs-dismiss="modal">Save changes
-                </button>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-<!--END OF MODAL -->
+        <!--END OF MODAL -->
 
-</body>
+    </body>
 </html>
 
 <script>
@@ -89,10 +89,11 @@
         "Bjarne",
         "Ida"
     ]
-
+    //baseUrl mangler
     const URLstudents = "http://localhost:3333/students"; //For when we meet in the class - remember to set server.port = 3333
     const URLstudent  = "http://localhost:3333/student"; //For when we meet in the class
 
+    //kald direkte
     function setUpHandlers() {
         document.getElementById("student-table-body").onclick = handleTableClick
         document.getElementById("btn-save").onclick = saveStudent
@@ -283,6 +284,7 @@
         document.getElementById("student-table-body").innerHTML = rows.join("")
     }
 
+    //flyttes til toppen
     fetchStudents()
 
     // const data = {name: "lis Benson", bornDate: "2012-03-31", bornTime: "16:01"};
@@ -313,4 +315,13 @@
         return res.json()
     }
 
+    function escapeHTML(string) {
+        if (!string) return "";
+
+        return string.replaceAll(`&`, "&amp;")
+            .replaceAll(`>`, "&gt;")
+            .replaceAll(`<`, "&lt;")
+            .replaceAll(`"`, "&quot;")
+            .replaceAll(`/`, "&#039;");
+    }
 </script>
